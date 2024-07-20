@@ -24,7 +24,7 @@ export default function EditProductPage({params}) {
     
     useEffect(() => {
         getProductDetails();
-    },[])
+    },)
 
 
     return (
