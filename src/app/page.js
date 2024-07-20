@@ -57,7 +57,7 @@ export default function LoginPage() {
               />
             </svg>
           </div>
-          Ecommerce
+          Audiophile
         </div>
       </a>
       <div className="relative mt-12 w-full max-w-lg sm:mt-10">

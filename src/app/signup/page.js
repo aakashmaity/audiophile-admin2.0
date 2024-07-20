@@ -66,7 +66,7 @@ export default function Register() {
                 />
               </svg>
             </div>
-            Ecommerce
+            Audiophile
           </div>
         </Link>
         <div className="relative mt-12 w-full max-w-lg sm:mt-10">
