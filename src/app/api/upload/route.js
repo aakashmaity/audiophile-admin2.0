@@ -13,7 +13,7 @@ export async function POST(req) {
 
         // console.log("mongo connected");
         const form = new multiparty.Form();
-        const {fields,files} = await new Promise ((resolve,reject) => {
+        const {fields,files} = new Promise ((resolve,reject) => {
             form.parse(req,(err, fields, files) => {
                 if(err){
                     throw err;
