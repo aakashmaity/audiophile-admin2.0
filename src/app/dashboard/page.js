@@ -2,6 +2,7 @@
 
 import Layout from "@/components/Layout";;
 import axios from "axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 
@@ -10,8 +11,6 @@ export default function DashboardPage() {
   const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState(null);
   const [admin , setAdmin] = useState(null);
-
-  
 
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function DashboardPage() {
             Hello, <span>{admin?.name}</span>
           </div>
           <div>
-            <img src={admin?.image} alt="image" />
+            <Image src={admin?.image} alt="image" />
           </div>
         </div>
 
