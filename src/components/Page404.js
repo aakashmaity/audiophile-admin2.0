@@ -5,11 +5,11 @@ const Page404 = () => {
   return (
     <>
       <div className="bg-bgYellow text-white">
-        <div className="flex h-screen">
+        <div className="flex h-full">
           <div className="m-auto text-center">
-            <div>
+            <div className=" ">
               <svg
-                width="631"
+                width="400"
                 height="379"
                 viewBox="0 0 631 379"
                 fill="none"

@@ -38,20 +38,16 @@ export async function sendEmail(email, emailType, adminId){
             to : email,
             subject : emailType === "VERIFY" ? "Verify your mail" : "Reset your password",
             html : `Hello, <br><br>Please ${emailType === "VERIFY"? "verify" : "reset"} your password by clicking on the following link: <br><br>
-            <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">${emailType}}</a><br><br>
+            <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}&type=${emailType.toLowerCase()}">${emailType}}</a><br><br>
             If you did not request this, please ignore this email.<br>
             <p>${process.env.DOMAIN}/verifyemail?token=${hashedToken}</p>
             <br><br>
             Thanks,<br>
             Aakash Maity`
         }
-        try {
-            const mailResponse = await transport.sendMail(mailOptions);
-            return mailResponse;
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    
+        
+        const mailResponse = await transport.sendMail(mailOptions);
+        return mailResponse;
     } catch (error) {
         console.error("Sendemail error : ",error);
         throw new Error(error.message);

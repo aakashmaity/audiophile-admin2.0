@@ -1,41 +1,52 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { Category } from "@/models/Category";
-import { getServerSession } from "next-auth";
-import { authOptions, isAdminRequest } from "./auth/[...nextauth]";
+import { NextResponse } from "next/server";
+// import { authOptions, isAdminRequest } from "./auth/[...nextauth]";
 
-export default async function handler(req , res) {
-    const { method } = req;
-    await mongooseConnect();
-    await isAdminRequest(req,res);
 
-    if(method === 'GET'){
-        res.json(await Category.find().populate('parent'))
+export async function GET(req){
+    try {
+        await mongooseConnect();
+
+        const categories = await Category.find().populate('parent');
+        return NextResponse.json({categories, success: true, message:"category parent found"},{status:  200});
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({success: false, message: "Internal Server Error"}, {status: 500});
     }
+}
 
-    if(method === 'POST'){
-        const {name, parentCategory, properties} = req.body
+export async function POST(req, res){
+    try {
+        await mongooseConnect();
+
+        const {name, parentCategory, properties} = await req.json();
         const categoryDoc = await Category.create({
             name, 
             parent: parentCategory || undefined, 
             properties
         })
-        res.json(categoryDoc)
+        return NextResponse.json({categoryDoc, success: true, message: "Created successfull"},{status: 200});
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({success: false, message: "Internal Server Error"},{status: 500});
     }
+}
 
-    if(method === 'PUT'){
-        const {name, parentCategory, properties, _id} = req.body
+export async function PUT(req, res){
+    try {
+        await mongooseConnect();
+
+        const {name, parentCategory, properties, _id} = await req.json();
         const categoryDoc = await Category.updateOne({_id},{
             name, 
             parent: parentCategory || undefined, 
             properties
         })
-        res.json(categoryDoc)
-    }
-
-    if(method === 'DELETE'){
-        const {_id} = req.query
-       
-        await Category.deleteOne({_id})
-        res.json('ok')
+        return NextResponse.json({categoryDoc, success: true, message: "Updated successfully"},{status: 200});
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({success: false,message: "Internal Server Error"},{status: 500});
     }
 }
+

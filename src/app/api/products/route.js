@@ -1,23 +1,24 @@
 import { Product } from "@/models/Product";
 import { mongooseConnect } from "@/lib/mongoose";
-import { isAdminRequest } from "./auth/[...nextauth]";
+import { NextResponse } from "next/server";
 
-export default async function handler(req, res) {
-  const { method } = req;
-  await mongooseConnect();
-  await isAdminRequest(req, res);
+export async function GET() {
+  try {
 
-  if (method === "GET") {
-    if (req.query?.id) {
-      res.json(await Product.findOne({ _id: req.query?.id }));
-    } else {
-      res.json(await Product.find());
-    }
+    await mongooseConnect();
+
+    const productList = await Product.find();
+    return NextResponse.json({ productList, success: true, message: "Product List found!" });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ success: false, message: "Internal error!" });
   }
+}
+export async function POST(req) {
+  try {
+    await mongooseConnect();
 
-  if (method === "POST") {
-    const { title, description, price, images, category, properties } =
-      req.body;
+    const { title, description, price, images, category, properties } = await req.json();
     const productDoc = await Product.create({
       title,
       description,
@@ -26,30 +27,9 @@ export default async function handler(req, res) {
       properties,
       category: category || undefined,
     });
-    res.json(productDoc);
-  }
-
-  if (method === "PUT") {
-    const { title, description, price, images, category, properties, _id } =
-      req.body;
-    await Product.updateOne(
-      { _id },
-      {
-        title,
-        description,
-        price,
-        images,
-        properties,
-        category: category || undefined,
-      }
-    );
-    res.json(true);
-  }
-
-  if (method == "DELETE") {
-    if (req.query?.id) {
-      await Product.deleteOne({ _id: req.query?.id });
-      res.json(true);
-    }
+    return NextResponse.json({ productDoc, success: true, message: "Product created!" });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ success: false, message: "Internal error!" });
   }
 }

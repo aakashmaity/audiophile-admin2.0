@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Layout from "@/components/Layout";
 import axios from "axios";
@@ -16,10 +16,10 @@ const Categories = ({ swal }) => {
   async function fetchCategories() {
     try {
       const res = await axios.get("/api/categories");
-      setCategories(res.data);
+      setCategories(res.data.categories);
     } catch (error) {
-      toast.error(error.response?.data?.message);
       console.error(error);
+      toast.error(error.response?.data?.message);
     }
   }
 
@@ -40,21 +40,23 @@ const Categories = ({ swal }) => {
         })),
       };
       // console.log("data",data);
+      let res;
       if (editedCategory) {
         data._id = editedCategory._id;
-        await axios.put("/api/categories", data);
+        res = await axios.put("/api/categories", data);
         setEditedCategory(null);
       } else {
-        await axios.post("/api/categories", data);
+        res = await axios.post("/api/categories", data);
       }
+      toast.success(res.data?.message);
 
       setName("");
       setParentCategory("");
       setProperties([]);
       fetchCategories();
     } catch (error) {
-      toast.error(error.response?.data?.message);
       console.error(error);
+      toast.error(error.response?.data?.message);
     }
   }
 
@@ -68,7 +70,7 @@ const Categories = ({ swal }) => {
         values: values.join(","),
       }))
     );
-    console.log("properties", properties);
+    // console.log("properties", properties);
   }
 
   function deleteCategory(category) {
@@ -87,7 +89,7 @@ const Categories = ({ swal }) => {
         // console.log(result)
         if (result.isConfirmed) {
           const { _id } = category;
-          await axios.delete(`/api/categories?_id=${_id}`);
+          await axios.delete(`/api/categories/${_id}`);
           await swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
@@ -229,11 +231,11 @@ const Categories = ({ swal }) => {
             <tr>
               <td>Category name</td>
               <td>Parent category</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            {categories.length &&
-              categories.map((category) => (
+            { categories.map((category) => (
                 <tr key={category._id}>
                   <td>{category.name}</td>
                   <td>{category?.parent?.name}</td>
@@ -256,7 +258,7 @@ const Categories = ({ swal }) => {
           </tbody>
         </table>
       )}
-      <Toaster/>
+      <Toaster />
     </Layout>
   );
 };

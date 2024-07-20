@@ -8,6 +8,6 @@ export async function GET(req){
         response.cookies.set("token","",{expires: new Date(Date.now())});
         return response;
     } catch (error) {
-        return NextResponse.json({success: false, message: error.message},{status:500});
+        return NextResponse.json({success: false, message: "Logout failed!"},{status:500});
     }
 }

@@ -9,6 +9,7 @@ const OrderSchema = new Schema({
     country: String,
     paid: Boolean,
     order_id: String,
+    status: String,
 },{
     timestamps:true,
 });

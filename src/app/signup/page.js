@@ -47,7 +47,7 @@ export default function Register() {
   }
   return (
     <>
-      <div className="bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
+      <div className="text-black flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
         <Link href="#">
           <div className="text-foreground font-semibold text-2xl tracking-tighter mx-auto flex items-center gap-2">
             <div>
@@ -71,7 +71,7 @@ export default function Register() {
         </Link>
         <div className="relative mt-12 w-full max-w-lg sm:mt-10">
           <div
-            className="relative -mb-px h-px w-full bg-gradient-to-r from-transparent via-sky-300 to-transparent"
+            className="relative -mb-px h-px w-full bg-gradient-to-r from-transparent via-sky-400 to-transparent"
             bis_skin_checked="1"
           ></div>
           <div className="mx-5 border dark:border-b-white/50 dark:border-t-white/50 border-b-white/20 sm:border-t-white/20 shadow-[20px_0_20px_20px] shadow-slate-500/10 dark:shadow-white/20 rounded-lg border-white/20 border-l-white/20 border-r-white/20 sm:shadow-sm lg:rounded-xl lg:shadow-none">
@@ -87,9 +87,9 @@ export default function Register() {
               <form onSubmit={handleSubmit}>
                 <div>
                   <div>
-                    <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                    <div className="group relative rounded-lg border-2 focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                       <div className="flex justify-between">
-                        <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                        <label className="text-xs font-medium text-muted-foreground text-gray-400">
                           Name
                         </label>
                       </div>
@@ -105,9 +105,9 @@ export default function Register() {
                 </div>
                 <div className="mt-4">
                   <div>
-                    <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                    <div className="group relative rounded-lg border-2 focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                       <div className="flex justify-between">
-                        <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                      <label className="text-xs font-medium text-muted-foreground text-gray-400">
                           Email
                         </label>
                       </div>
@@ -124,9 +124,9 @@ export default function Register() {
                 </div>
                 <div className="mt-4">
                   <div>
-                    <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                    <div className="group relative rounded-lg border-2 focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                       <div className="flex justify-between">
-                        <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                      <label className="text-xs font-medium text-muted-foreground text-gray-400">
                           Username
                         </label>
                       </div>
@@ -143,9 +143,9 @@ export default function Register() {
                 </div>
                 <div className="mt-4">
                   <div>
-                    <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                    <div className="group relative rounded-lg border-2 focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                       <div className="flex justify-between">
-                        <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                      <label className="text-xs font-medium text-muted-foreground text-gray-400">
                           Password
                         </label>
                       </div>
@@ -162,9 +162,9 @@ export default function Register() {
                 </div>
                 <div className="mt-4">
                   <div>
-                    <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                    <div className="group relative rounded-lg border-2 focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                       <div className="flex justify-between">
-                        <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                      <label className="text-xs font-medium text-muted-foreground text-gray-400">
                           Confirm Password
                         </label>
                       </div>
@@ -188,8 +188,6 @@ export default function Register() {
                   </button>
                 </div>
               </form>
-
-              {/* Login with section */}
 
               <div className="flex flex-col items-center justify-center space-y-3"></div>
             </div>

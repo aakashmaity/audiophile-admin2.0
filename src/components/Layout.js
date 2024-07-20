@@ -1,19 +1,13 @@
+"use client"
+
 import { useSession, signIn, signOut } from "next-auth/react";
-import Loginpage from "./Loginpage";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
+import { useState } from "react";
 
 const Layout = ({ children }) => {
-  const { data: session } = useSession();
+  
   const [showNav, setShowNav] = useState(false);
-
-  if (!session) {
-    return (
-      <>
-        <Loginpage />
-      </>
-    );
-  }
 
   return (
     <>
