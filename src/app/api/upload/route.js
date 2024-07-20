@@ -5,13 +5,13 @@ import mime from 'mime-types'
 import { mongooseConnect } from '@/lib/mongoose';
 import { NextRequest, NextResponse } from 'next/server';
 
-export const dynamic = 'auto'
-export const dynamicParams = true
-export const revalidate = false
-export const fetchCache = 'auto'
-export const runtime = 'nodejs'
-export const preferredRegion = 'auto'
-export const maxDuration = 5
+// export const dynamic = 'auto'
+// export const dynamicParams = true
+// export const revalidate = false
+// export const fetchCache = 'auto'
+// export const runtime = 'nodejs'
+// export const preferredRegion = 'auto'
+// export const maxDuration = 5
 
 
 export async function POST(req) {
@@ -70,6 +70,6 @@ export async function POST(req) {
     
 }   
 
-export const config = {
-    api: {bodyParser:false}
-}
+// export const config = {
+//     api: {bodyParser:false}
+// }
