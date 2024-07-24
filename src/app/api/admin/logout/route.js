@@ -5,8 +5,13 @@ export async function GET(req){
         let response = NextResponse.json({success: true, message : "Logout successful!"},{status: 200});
         
         // remove token from browser cookies
-       response.cookies.delete('token',{domain: process.env.DOMAIN});
-       return response;
+       let success = response.cookies.delete('token');
+       if(success){
+        return response;
+       }else{
+        console.log(response.cookies.get('token'));
+        throw new Error("failed to delete cookies");
+       }
     } catch (error) {
         return NextResponse.json({success: false, message: "Logout failed!"},{status:500});
     }
