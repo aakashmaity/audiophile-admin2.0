@@ -2,15 +2,14 @@
 
 import Layout from "@/components/Layout";
 import ProductForm from "@/components/ProductForm";
+import { Loader } from "@/components/Reactspinner";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
 export default function EditProductPage({params}) {
 
-    const [productInfo, setProductInfo] = useState(null)
-    const router = useRouter()
+    const [productInfo, setProductInfo] = useState(null);
     
     async function getProductDetails (){
         try {
@@ -24,7 +23,11 @@ export default function EditProductPage({params}) {
     
     useEffect(() => {
         getProductDetails();
-    },)
+    },[])
+
+    if(!productInfo){
+        return <Loader/>
+    }
 
 
     return (

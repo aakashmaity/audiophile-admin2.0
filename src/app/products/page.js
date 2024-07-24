@@ -1,13 +1,14 @@
 "use client"
 
 import Layout from "@/components/Layout";
+import { Loader } from "@/components/Reactspinner";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -21,6 +22,10 @@ const Products = () => {
     }
     fetchProducts();
   }, []);
+
+  if(!products){
+    return <Loader/>
+  }
 
   return (
     <Layout>

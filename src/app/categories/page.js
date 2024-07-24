@@ -1,6 +1,7 @@
 "use client";
 
 import Layout from "@/components/Layout";
+import { Loader } from "@/components/Reactspinner";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
@@ -8,7 +9,7 @@ import { withSwal } from "react-sweetalert2";
 
 const Categories = ({ swal }) => {
   const [name, setName] = useState("");
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(null);
   const [parentCategory, setParentCategory] = useState("");
   const [editedCategory, setEditedCategory] = useState(null);
   const [properties, setProperties] = useState([]);
@@ -26,6 +27,8 @@ const Categories = ({ swal }) => {
   useEffect(() => {
     fetchCategories();
   }, []);
+
+
 
   async function saveCategory(e) {
     try {
@@ -132,6 +135,11 @@ const Categories = ({ swal }) => {
         return pIndex !== indexToRemove;
       });
     });
+  }
+
+
+  if(!categories){
+    return <Loader/>
   }
 
   return (

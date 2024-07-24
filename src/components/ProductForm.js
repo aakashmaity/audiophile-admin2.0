@@ -4,8 +4,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ReactSortable } from "react-sortablejs";
-import Spinner from "./Spinner";
 import toast, { Toaster } from "react-hot-toast";
+import { Spinner } from "./Reactspinner";
 
 
 export default function ProductForm({
@@ -29,7 +29,7 @@ export default function ProductForm({
   const [goToProducts, setGoToProducts] = useState(false);
   const router = useRouter();
 
-  console.log(_id)
+  // console.log(_id)
 
   useEffect(() => {
     axios.get("/api/categories").then((res) => {

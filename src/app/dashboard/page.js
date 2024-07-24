@@ -1,8 +1,8 @@
 "use client";
 
-import Layout from "@/components/Layout";;
+import Layout from "@/components/Layout";
+import { Loader } from "@/components/Reactspinner";
 import axios from "axios";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 
@@ -31,6 +31,10 @@ export default function DashboardPage() {
 
   }, []);
 
+  if(!orders && !products && !categories && !admin) {
+    return <Loader/>
+  }
+
 
   return (
     <Layout>
@@ -39,8 +43,8 @@ export default function DashboardPage() {
           <div>
             Hello, <span>{admin?.name}</span>
           </div>
-          <div>
-            <Image src={admin?.image} alt="image" />
+          <div className="h-10 w-10">
+            <img src="./profile.png" alt="profile" className=" rounded-full" />
           </div>
         </div>
 

@@ -1,12 +1,13 @@
 "use client";
 
 import Layout from "@/components/Layout";
+import { Loader } from "@/components/Reactspinner";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function OrdersPage() {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState(null);
 
 
   useEffect(() => {
@@ -21,6 +22,10 @@ export default function OrdersPage() {
     }
     fetchOrders();
   }, []);
+
+  if(!orders){
+    return <Loader/>
+  }
 
   return (
     <Layout>

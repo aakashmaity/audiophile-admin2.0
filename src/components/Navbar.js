@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 
 import axios from "axios";
 import Link from "next/link";
@@ -19,8 +18,12 @@ const Navbar = ({ showNav }) => {
 
   async function LogOut() {
     try {
-      const res = await axios.get("/api/admin/logout");
-      router.push("/");
+      await axios.get("/api/admin/logout");
+      toast.success("Logout successful!");
+      setTimeout(() => {
+        toast.dismiss();
+        router.push("/");
+      }, 700);
     } catch (error) {
       console.log(error);
       toast.error(error.response?.data?.message);
@@ -34,13 +37,11 @@ const Navbar = ({ showNav }) => {
         "top-0 text-gray-600 p-4 fixed w-[40%] bg-bgBlue h-[100vh] transition-all md:static md:w-[25%]"
       }
     >
-      <div className="flex justify-between">
-        
-      </div>
-      
+      <div className="flex justify-between"></div>
+
       <nav className="flex flex-col gap-2">
         <Link
-          href={"/"}
+          href={"/dashboard"}
           className={pathname === "/dashboard" ? activeLink : inactiveLink}
         >
           <svg
@@ -54,7 +55,9 @@ const Navbar = ({ showNav }) => {
         </Link>
         <Link
           href={"/products"}
-          className={pathname?.includes("/products") ? activeLink : inactiveLink}
+          className={
+            pathname?.includes("/products") ? activeLink : inactiveLink
+          }
         >
           <svg
             className={pathname === "/products" ? activeIcon : inactiveIcon}
@@ -112,7 +115,7 @@ const Navbar = ({ showNav }) => {
         </Link>
         <button onClick={LogOut} className={inactiveLink}>
           <svg
-            className={pathname === "/logout" ? activeIcon : inactiveIcon}
+            className={inactiveIcon}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
           >
@@ -128,7 +131,6 @@ const Navbar = ({ showNav }) => {
           Logout
         </button>
       </nav>
-      <Toaster/>
     </aside>
   );
 };

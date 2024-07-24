@@ -1,6 +1,7 @@
 "use client";
 
 import Layout from "@/components/Layout";
+import { Loader } from "@/components/Reactspinner";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
@@ -22,7 +23,9 @@ export default function Admindetails({ params }) {
   }, []);
 
   if (!adminData) {
-    return <div>Loading....</div>;
+    return (
+      <Loader/>
+    );
   }
 
   return (
