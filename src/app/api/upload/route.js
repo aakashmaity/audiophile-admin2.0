@@ -18,7 +18,7 @@ async function uploadFiletoS3(file,filename){
     const filetypes = ["png","jpg","jpeg"]
     const extension = filename?.split('.')?.pop()
 
-    if(!filetypes.includes(extension)){
+    if(!filetypes.includes(extension.toLowerCase())){
         throw new Error("Invalid file extension");
     }
 
@@ -35,12 +35,13 @@ async function uploadFiletoS3(file,filename){
     await client.send(command);
 
     return newFilename
-
 }
 
 export async function POST(req) {
     try {
+        console.log("befor connect mongoDB");
         await mongooseConnect();
+        console.log("connected mongoDB");
 
         const formData = await req.formData();
         const file = formData.get('file');
@@ -52,7 +53,7 @@ export async function POST(req) {
         const buffer = Buffer.from(await file.arrayBuffer());
 
         // upload file to the s3 bucket
-        const filename = await uploadFiletoS3(buffer,file.name);
+        const filename = await uploadFiletoS3(buffer,file?.name);
         const link = `https://${process.env.BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${filename}`
 
         let links = [];
@@ -60,8 +61,8 @@ export async function POST(req) {
 
         return NextResponse.json({links, success: true, message:"upload successfully"},{status: 200});
     } catch (error) {
-        // console.error(error);
-        return NextResponse.json({req ,success: false, message : "File type must be in .jpg, .jpeg, .png format"},{status: 500});
+        console.error(error);
+        return NextResponse.json({success: false, message : "File type must be in .jpg, .jpeg, .png format"},{status: 500});
     }
     
 }   
