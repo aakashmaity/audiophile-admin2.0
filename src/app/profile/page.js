@@ -34,11 +34,7 @@ export default function ProfilePage() {
   async function handleLogout() {
     try {
       const response = await axios.get("api/admin/logout");
-      toast.success("Logout successful!");
-      setTimeout(() => {
-        toast.dismiss();
-        router.push("/");
-      }, 1000);
+      router.push("/");
     } catch (error) {
       toast.error(error.message);
     }
