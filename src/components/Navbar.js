@@ -19,11 +19,7 @@ const Navbar = ({ showNav }) => {
   async function LogOut() {
     try {
       await axios.get("/api/admin/logout");
-      toast.success("Logout successful!");
-      setTimeout(() => {
-        toast.dismiss();
-        router.push("/");
-      }, 700);
+      router.push("/")
     } catch (error) {
       console.log(error);
       toast.error(error.response?.data?.message);

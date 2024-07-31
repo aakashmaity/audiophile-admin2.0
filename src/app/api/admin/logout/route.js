@@ -5,7 +5,7 @@ export async function GET(req){
         let response = NextResponse.json({success: true, message : "Logout successful!"},{status: 200});
         
         // remove token from browser cookies
-        response.cookies.delete('token');
+        response.cookies.set("token", "")
         // if(success){
         //     return response;
         // }else{
