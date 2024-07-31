@@ -26,12 +26,7 @@ export default function LoginPage() {
       // send data to server
       const data = { username, password };
       const response = await axios.post("/api/admin/login", data);
-
-      toast.success(response.data?.message);
-      setTimeout(() => {
-        toast.dismiss();
-        router.push("/dashboard");
-      }, 1000);
+      router.push("/dashboard");
     } catch (error) {
       console.log(error.message);
       toast.error(error.response?.data?.message);
@@ -137,7 +132,7 @@ export default function LoginPage() {
               </div>
             </form>
 
-            {/* Login with section */}
+            {/* Login with google, github etc section */}
 
             <div className="flex flex-col items-center justify-center space-y-3"></div>
           </div>
