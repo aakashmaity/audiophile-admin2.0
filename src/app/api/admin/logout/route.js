@@ -6,7 +6,7 @@ export async function POST(req){
         
         // remove token from browser cookies
         response.cookies.set("token", "",{
-            expires: new Date(0)
+            expiresIn: new Date(0)
         })
         // if(success){
         //     return response;

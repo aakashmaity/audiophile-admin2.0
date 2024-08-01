@@ -35,7 +35,7 @@ export async function POST(req) {
     const response = NextResponse.json({ success: true, message: "Logged in successfully" },{status: 200});
 
     // store token in browser cookies
-    response.cookies.set("token",token,{ expires: "1d", httpOnly: true});
+    response.cookies.set("token",token,{ expiresIn: "1d", httpOnly: true});
     return response;
   } catch (error) {
     console.log(error);
