@@ -1,6 +1,6 @@
 ## Deploy on Vercel
 
-Deploy on : https://audiophile-admin2-0-lh0gzelmt-aakashmaitys-projects.vercel.app
+Deploy on : https://audiophile-admin.vercel.app
 
 
 
