@@ -8,12 +8,12 @@ import { useState } from "react";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(true);
-  const inactiveLink = "flex gap-1 p-1 items-center";
+  const inactiveLink = "flex gap-1 p-1 items-center hover:text-white";
   const activeLink = inactiveLink + " text-white rounded-md";
 
   const router = useRouter();
 
-  const { pathname } = window.location;
+  const { pathname } = router;
 
 
   async function LogOut() {
@@ -82,7 +82,7 @@ const Navbar = () => {
               href={"/dashboard"}
               className={pathname === "/dashboard" ? activeLink : inactiveLink}
             >
-              <span>Dashboard</span>
+              Dashboard
             </Link>
             <Link
               href={"/products"}
@@ -90,7 +90,7 @@ const Navbar = () => {
                 pathname?.includes("/products") ? activeLink : inactiveLink
               }
             >
-              <span>Products</span>
+              Products
             </Link>
             <Link
               href={"/categories"}
@@ -106,7 +106,7 @@ const Navbar = () => {
                 pathname?.includes("/orders") ? activeLink : inactiveLink
               }
             >
-              <span>Orders</span>
+              Orders
             </Link>
           </nav>
       ) : null}
@@ -119,7 +119,7 @@ const Navbar = () => {
               pathname?.includes("/profile") ? activeLink : inactiveLink
             }
           >
-            <span>Profile</span>
+            Profile
           </Link>
           <button onClick={LogOut} className={inactiveLink}>
             Logout
