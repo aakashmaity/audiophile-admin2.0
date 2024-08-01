@@ -149,7 +149,7 @@ const Categories = ({ swal }) => {
 
   return (
     <Layout>
-      <h1>Categories</h1>
+      <h1 className="text-textWhite1 mb-4">Categories</h1>
       <label>
         {editedCategory
           ? `Edit category ${editedCategory.name}`
@@ -209,7 +209,7 @@ const Categories = ({ swal }) => {
                 />
                 <button
                   type="button"
-                  className="btn-red"
+                  className="btn-red text-sm mb-2"
                   onClick={(e) => removeProperties(index)}
                 >
                   Remove
@@ -218,7 +218,7 @@ const Categories = ({ swal }) => {
             ))}
         </div>
         <div className=" flex gap-1">
-          <button type="submit" className="btn-primary py-1">
+          <button type="submit" className="font-semibold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-9 px-4 py-2">
             Save
           </button>
           {editedCategory && (
@@ -230,7 +230,7 @@ const Categories = ({ swal }) => {
                 setParentCategory("");
                 setProperties([]);
               }}
-              className="btn-default"
+              className="font-semibold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-9 px-4 py-2"
             >
               Cancel
             </button>

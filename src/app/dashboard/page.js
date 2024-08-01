@@ -39,7 +39,7 @@ export default function DashboardPage() {
   return (
     <Layout>
       <div className="mx-4 space-y-8 mt-3">
-        <div className="flex justify-between">
+        <div className="flex justify-between text-textWhite1">
           <div>
             Hello, <span>{admin?.name}</span>
           </div>

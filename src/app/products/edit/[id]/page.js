@@ -32,7 +32,7 @@ export default function EditProductPage({params}) {
 
     return (
         <Layout>
-            <h2>Edit Product Page</h2>
+            <h2 className=" text-textWhite1 mb-4">Edit Product</h2>
             { productInfo && (
                 <ProductForm {...productInfo}/>
             )}

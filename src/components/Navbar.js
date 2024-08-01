@@ -4,17 +4,17 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
-import Logo from "./Logo";
 import { useState } from "react";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(true);
   const inactiveLink = "flex gap-1 p-1 items-center";
-  const activeLink = inactiveLink + " bg-highlight text-black rounded-md";
+  const activeLink = inactiveLink + " text-white rounded-md";
 
   const router = useRouter();
 
-  const { pathname } = router;
+  const { pathname } = window.location;
+
 
   async function LogOut() {
     try {
@@ -29,11 +29,11 @@ const Navbar = () => {
   return (
     <aside
       className={
-        "md:flex md:flex-row md:justify-between top-0 bg-bgBlack w-full text-textWhite1 p-4 px-10 fixed transition-all"
+        "md:flex md:flex-row md:justify-between items-center top-0 bg-textBlack2 w-full text-textWhite2 p-4 px-10 fixed transition-all"
       }
     >
       <div className="flex justify-between">
-        <Logo />
+        <span className="font-bold text-textWhite1">Audiophile Admin</span>
         <button className="md:hidden" onClick={() => setShowNav(!showNav)}>
           {showNav ? (
             <svg
@@ -76,45 +76,56 @@ const Navbar = () => {
           )}
         </button>
       </div>
-      <nav className="flex flex-col md:flex-row gap-2 ">
-        <Link
-          href={"/dashboard"}
-          className={pathname === "/dashboard" ? activeLink : inactiveLink}
-        >
-          <span>Dashboard</span>
-        </Link>
-        <Link
-          href={"/products"}
-          className={
-            pathname?.includes("/products") ? activeLink : inactiveLink
-          }
-        >
-          <span>Products</span>
-        </Link>
-        <Link
-          href={"/categories"}
-          className={
-            pathname?.includes("/categories") ? activeLink : inactiveLink
-          }
-        >
-          <span>Categories</span>
-        </Link>
-        <Link
-          href={"/orders"}
-          className={pathname?.includes("/orders") ? activeLink : inactiveLink}
-        >
-          <span>Orders</span>
-        </Link>
-        <Link
-          href={"/profile"}
-          className={pathname?.includes("/profile") ? activeLink : inactiveLink}
-        >
-          <span>Profile</span>
-        </Link>
-        <button onClick={LogOut} className={inactiveLink}>
-          Logout
-        </button>
-      </nav>
+      {showNav ? (
+          <nav className="flex flex-col text-lg md:flex-row gap-2 ">
+            <Link
+              href={"/dashboard"}
+              className={pathname === "/dashboard" ? activeLink : inactiveLink}
+            >
+              <span>Dashboard</span>
+            </Link>
+            <Link
+              href={"/products"}
+              className={
+                pathname?.includes("/products") ? activeLink : inactiveLink
+              }
+            >
+              <span>Products</span>
+            </Link>
+            <Link
+              href={"/categories"}
+              className={
+                pathname?.includes("/categories") ? activeLink : inactiveLink
+              }
+            >
+              <span>Categories</span>
+            </Link>
+            <Link
+              href={"/orders"}
+              className={
+                pathname?.includes("/orders") ? activeLink : inactiveLink
+              }
+            >
+              <span>Orders</span>
+            </Link>
+          </nav>
+      ) : null}
+
+      {showNav ? (
+        <nav className="flex text-lg flex-col md:flex-row md:mt-0 mt-2 gap-2">
+          <Link
+            href={"/profile"}
+            className={
+              pathname?.includes("/profile") ? activeLink : inactiveLink
+            }
+          >
+            <span>Profile</span>
+          </Link>
+          <button onClick={LogOut} className={inactiveLink}>
+            Logout
+          </button>
+        </nav>
+      ) : null}
 
       <Toaster />
     </aside>

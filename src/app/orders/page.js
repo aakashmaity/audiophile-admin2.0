@@ -30,7 +30,7 @@ export default function OrdersPage() {
     <Layout>
       <div className="mx-0 space-y-4">
         <div className="flex justify-between items-center mx-4">
-          <h1 className="p-0 m-0">Orders</h1>
+          <h1 className="p-0 m-0 text-textWhite1">Orders</h1>
         </div>
 
         <div className="overflow-scroll">

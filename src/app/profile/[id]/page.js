@@ -30,11 +30,11 @@ export default function Admindetails({ params }) {
 
   return (
     <Layout>
-      <div className=" flex flex-col justify-center items-center">
-        <h1 className="text-white">admin Details {params.id}</h1>
-        <h3>{adminData?.name}</h3>
-        <h3>{adminData?.username}</h3>
-        <h3>{adminData?._id}</h3>
+      <div className=" flex flex-col justify-center items-center text-textWhite2">
+        <h1>admin Details {params.id}</h1>
+        <h3>Name: {adminData?.name}</h3>
+        <h3>Username : {adminData?.username}</h3>
+        <h3>DB Id: {adminData?._id}</h3>
         <Toaster />
       </div>
     </Layout>

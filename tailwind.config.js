@@ -28,6 +28,10 @@ module.exports = {
         textOrange: "#fe6d15f7"
         
       },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        mono: ["Fira Code", "monospace"],
+      },
     },
   },
   plugins: [],

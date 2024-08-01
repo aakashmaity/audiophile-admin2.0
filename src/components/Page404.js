@@ -4,7 +4,7 @@ import React from "react";
 const Page404 = () => {
   return (
     <>
-      <div className="bg-bgYellow text-white">
+      <div className="bg-bgBlack text-textWhite1">
         <div className="flex h-full">
           <div className="m-auto text-center">
             <div className=" ">
