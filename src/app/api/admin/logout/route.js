@@ -8,12 +8,6 @@ export async function POST(req){
         response.cookies.set("token", "",{
             expiresIn: new Date(0)
         })
-        // if(success){
-        //     return response;
-        // }else{
-        //     // console.log(response.cookies.get('token'));
-        //     throw new Error("failed to delete cookies");
-        // }
         return response;
     } catch (error) {
         return NextResponse.json({success: false, message: "Logout failed!"},{status:500});
