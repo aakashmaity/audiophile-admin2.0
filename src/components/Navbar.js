@@ -18,7 +18,7 @@ const Navbar = ({ showNav }) => {
 
   async function LogOut() {
     try {
-      await axios.get("/api/admin/logout");
+      await axios.post("/api/admin/logout");
       router.push("/")
     } catch (error) {
       console.log(error);

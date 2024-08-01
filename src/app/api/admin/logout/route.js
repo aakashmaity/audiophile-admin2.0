@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 
-export async function GET(req){
+export async function POST(req){
     try {
         let response = NextResponse.json({success: true, message : "Logout successful!"},{status: 200});
         
         // remove token from browser cookies
-        response.cookies.set("token", "")
+        response.cookies.set("token", "",{
+            expires: new Date(0)
+        })
         // if(success){
         //     return response;
         // }else{

@@ -33,7 +33,7 @@ export default function ProfilePage() {
 
   async function handleLogout() {
     try {
-      const response = await axios.get("api/admin/logout");
+      const response = await axios.post("api/admin/logout");
       router.push("/");
     } catch (error) {
       toast.error(error.message);

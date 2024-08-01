@@ -30,14 +30,12 @@ export async function POST(req) {
     };
 
     // generate token
-    const token = jwt.sign(tokenData, process.env.JWT_SECRET, {
-        expiresIn: "1d",
-    });
+    const token = jwt.sign(tokenData, process.env.JWT_SECRET);
 
     const response = NextResponse.json({ success: true, message: "Logged in successfully" },{status: 200});
 
     // store token in browser cookies
-    response.cookies.set("token",token,{httpOnly: false,});
+    response.cookies.set("token",token,{ expiresIn: "1d", httpOnly: true});
     return response;
   } catch (error) {
     console.log(error);
