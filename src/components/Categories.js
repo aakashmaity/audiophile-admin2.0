@@ -16,7 +16,7 @@ export function Categories () {
       <label>New categories name</label>
       <form onSubmit={saveCategory} className="flex gap-1">
         <input
-          className="mb-0"
+          className="mb-0 basicInput"
           type="text"
           placeholder="Category name"
           onChange={(e) => setName(e.target.value)}

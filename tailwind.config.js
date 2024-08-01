@@ -19,6 +19,14 @@ module.exports = {
         bgGreen: "#B6C7AA",
         bgBlue: "#BBE9FF",
         bgOrange : "#FF8237",
+        bgBlack : "#050503",
+        bgSlate: "#ddeaf814",
+        textWhite1: "#e5e7eb",
+        textWhite2: "#aaa",
+        bgBlack1: "#25272a",
+        textBlack2: "#191a1c",
+        textOrange: "#fe6d15f7"
+        
       },
     },
   },

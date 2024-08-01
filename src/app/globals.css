@@ -3,19 +3,23 @@
 @tailwind utilities;
 
 body{
-  @apply bg-bgYellow
+  @apply bg-bgBlack
 }
 
-input,textarea,select{
-  @apply border border-gray-300 rounded-sm py-1 px-3 w-full mb-2;
+
+.basicInput ,textarea,select{
+  @apply border-0 bg-bgSlate text-textWhite1 rounded-sm py-1 px-3 w-full mb-2;
 
 }
-input:focus,textarea:focus, select:focus{
-  @apply border-blue-900;
+.basicInput:focus,textarea:focus, select:focus{
+  @apply border border-white bg-bgSlate;
 }
 
+select option {
+  @apply bg-black text-textWhite1
+}
 label{
-  @apply text-gray-600 text-sm;
+  @apply text-textWhite2 text-sm;
 }
 
 h1{
@@ -38,19 +42,21 @@ h1{
 
 
 table.basic{
-  @apply w-full bg-white rounded-sm 
+  @apply w-full bg-bgBlack rounded-sm 
 }
 table.basic thead tr td,
 table.basic thead tr th {
-  @apply text-sm text-gray-600 uppercase border-b border-gray-200 px-4 py-2 
+  @apply text-sm text-white uppercase border-b border-gray-200 px-4 py-2 
 }
 
 table.basic tr td{
-  @apply px-4 border-x border-gray-200 
+  @apply px-4 border-x border-bgBlack1 
 }
 table.basic tr td{
-  @apply px-4 border-y border-gray-100 
+  @apply px-4 border-y border-bgBlack1  text-textWhite2
 }
+
+
 
 
 table.basic a{

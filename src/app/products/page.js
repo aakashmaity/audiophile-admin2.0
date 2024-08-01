@@ -36,8 +36,8 @@ const Products = () => {
       <table className="basic mt-2">
         <thead>
           <tr>
-            <td>Product name</td>
-            <td></td>
+            <th>Product name</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

@@ -34,6 +34,11 @@ const Categories = ({ swal }) => {
     try {
       e.preventDefault();
       // console.log("properties1", properties);
+
+      if(!name){
+        toast.error("Category name is required");
+        return;
+      }
       const data = {
         name,
         parentCategory,
@@ -42,7 +47,7 @@ const Categories = ({ swal }) => {
           values: p.values?.split(","),
         })),
       };
-      // console.log("data",data);
+      
       let res;
       if (editedCategory) {
         data._id = editedCategory._id;
@@ -153,7 +158,7 @@ const Categories = ({ swal }) => {
       <form onSubmit={saveCategory}>
         <div className="flex gap-1">
           <input
-            className=""
+            className="basicInput"
             type="text"
             placeholder="Category name"
             onChange={(e) => setName(e.target.value)}
@@ -187,7 +192,7 @@ const Categories = ({ swal }) => {
                 <input
                   type="text"
                   value={property.name}
-                  className="mb-0"
+                  className="mb-0 basicInput"
                   onChange={(e) =>
                     handlePropertyNameChange(index, property, e.target.value)
                   }
@@ -196,7 +201,7 @@ const Categories = ({ swal }) => {
                 <input
                   type="text"
                   value={property.values}
-                  className="mb-0"
+                  className="mb-0 basicInput"
                   onChange={(e) =>
                     handlePropertyValueChange(index, property, e.target.value)
                   }
@@ -237,9 +242,9 @@ const Categories = ({ swal }) => {
         <table className="basic mt-4">
           <thead>
             <tr>
-              <td>Category name</td>
-              <td>Parent category</td>
-              <td></td>
+              <th>Category name</th>
+              <th>Parent category</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

@@ -1,5 +1,6 @@
 "use client";
 
+import InputGroup from "@/components/InputGroup";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -93,7 +94,7 @@ export default function VerifyEmailPage() {
           </>
         ) : (
           <>
-            <div className=" text-black flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
+            <div className=" bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
               <h1>Password Reset - {token}</h1>
               <div className="relative mt-12 w-full max-w-lg sm:mt-10">
                 <div
@@ -108,40 +109,8 @@ export default function VerifyEmailPage() {
                   </div>
                   <div className="p-6 pt-0">
                     <form onSubmit={handleResetPassword}>
-                      <div>
-                        <div className="space-y-2">
-                          <div className="group relative rounded-lg border-2 focus-within:border-sky-200 px-3 pb-1 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
-                            <div className="flex justify-between">
-                              <label className="text-xs font-medium text-muted-foreground text-gray-400">
-                                Password
-                              </label>
-                            </div>
-                            <input
-                              type="password"
-                              name="password"
-                              autoComplete="off"
-                              value={password}
-                              onChange={(e) => setPassword(e.target.value)}
-                              className="block w-full border-0 bg-transparent p-0 text-sm file:my-1 file:rounded-full file:border-0 file:bg-accent file:px-4 file:py-2 file:font-medium placeholder:text-muted-foreground/90 focus:outline-none focus:ring-0 sm:leading-7 text-foreground"
-                            />
-                          </div>
-                          <div className="group relative rounded-lg border-2 focus-within:border-sky-200 px-3 pb-1 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
-                            <div className="flex justify-between">
-                              <label className="text-xs font-medium text-muted-foregroun text-gray-400">
-                                Confirm Password
-                              </label>
-                            </div>
-                            <input
-                              type="text"
-                              name="cpassword"
-                              value={cpassword}
-                              autoComplete="off"
-                              onChange={(e) => setCpassword(e.target.value)}
-                              className="block w-full border-0 bg-transparent p-0 text-sm file:my-1 file:rounded-full file:border-0 file:bg-accent file:px-4 file:py-2 file:font-medium placeholder:text-muted-foreground/90 focus:outline-none focus:ring-0 sm:leading-7 text-foreground"
-                            />
-                          </div>
-                        </div>
-                      </div>
+                    <InputGroup type="password" name={password} label="Password" value ={password} onChange={setPassword} />
+                    <InputGroup type="password" name={cpassword} label="Confirm Password" value ={cpassword} onChange={setCpassword} />
                       <div className="mt-4 flex items-center justify-end gap-x-2">
                         <button
                           className="font-semibold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-10 px-4 py-2"

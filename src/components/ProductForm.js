@@ -41,6 +41,11 @@ export default function ProductForm({
     e.preventDefault();
     try {
 
+      if(!title || !description || !price || images?.length<=0 || !productProperties){
+        toast.error("Please fill all required fields");
+        return ;
+      }
+
       const data = {
         title,
         description,
@@ -133,6 +138,7 @@ export default function ProductForm({
         <form onSubmit={saveProduct}>
           <label>Product name</label>
           <input
+            className="basicInput"
             type="text"
             placeholder="product name"
             value={title}
@@ -179,7 +185,7 @@ export default function ProductForm({
                 images.map((link) => (
                   <div
                     key={link}
-                    className="h-24 w-24 bg-white shadow-sm rounded-sm border border-gray-200"
+                    className="h-24 w-24 shadow-sm rounded-sm border border-gray-200"
                   >
                     <img src={link} alt="" className="rounded-lg" />
                   </div>
@@ -216,6 +222,7 @@ export default function ProductForm({
           />
           <label>Price </label>
           <input
+            className="basicInput"
             type="text"
             placeholder="price"
             value={price}
