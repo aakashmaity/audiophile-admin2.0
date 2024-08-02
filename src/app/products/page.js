@@ -16,7 +16,6 @@ const Products = () => {
         const res = await axios.get("/api/products")
         setProducts(res.data?.productList);
       } catch (error) {
-        toast.error(error.response?.data?.message);
         console.error(error);
       }
     }
@@ -80,7 +79,6 @@ const Products = () => {
           ))}
         </tbody>
       </table>
-      <Toaster/>
     </Layout>
   );
 };

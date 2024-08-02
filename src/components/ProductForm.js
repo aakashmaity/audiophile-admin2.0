@@ -133,7 +133,6 @@ export default function ProductForm({
       propertiesToFill.push(...parentCatInfo.properties);
       catInfo = parentCatInfo;
     }
-    // console.log(propertiesToFill)
   }
 
   return (

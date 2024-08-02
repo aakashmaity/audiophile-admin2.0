@@ -39,8 +39,9 @@ export default function ForgotPasswordPage() {
       const res = await axios.post("/api/admin/sendEmail", data)
       toast.success(res.data?.message);
       setTimeout(() =>{
+        toast.dismiss();
         router.push("/");
-      },700);
+      },1000);
     } catch (error) {
       console.log(error.message);
       toast.error(error.response?.data?.message);

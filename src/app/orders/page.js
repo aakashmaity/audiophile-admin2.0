@@ -4,7 +4,7 @@ import Layout from "@/components/Layout";
 import { Loader } from "@/components/Reactspinner";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState(null);
@@ -15,7 +15,6 @@ export default function OrdersPage() {
         const res = await axios.get("/api/orders");
         setOrders(res.data?.orders);
       } catch (error) {
-        toast.error(error.response?.data?.message);
         console.error(error);
       }
     }
