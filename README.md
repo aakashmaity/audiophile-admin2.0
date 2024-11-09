@@ -2,7 +2,7 @@
 
 Deploy admin on : https://audiophile-admin.vercel.app
 </br>
-Deploy client on : https://audiophile-ecommerce-client-frontend-1-0-bf7r-fhmer73xx.vercel.app
+Deploy client on : https://audiophile-ecommerce-client-frontend-1-0-bf7r.vercel.app
 
 
 ## Getting Started
